@@ -32,24 +32,48 @@ export const Navbar = () => {
                         src="/baby-spa.jpg"
                         alt="Baby Spa Logo"
                     />
+                    <button
+                        className="
+                            absolute right-6
+                            md:hidden
+                        "
+                        onClick={() => setMenuOpen(prev => !prev)}
+                    >
+                        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
-                <div className="flex justify-center items-center max-w-7xl mx-auto p-6">
-                    <div className="hidden md:flex gap-6">
-                        {navLinks.map(({label, target}) => (
-                            <a
-                                key={label}
-                                href={`#${target}`}
-                                className="transition hover:text-blue-500"
-                            >
-                                {label}
-                            </a>
-                        ))}
-                        <button onClick={toggleTheme}>
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
-                    </div>
+                <div className="hidden md:flex justify-center items-center max-w-7xl mx-auto py-4 gap-6">
+                    {navLinks.map(({ label, target }) => (
+                        <a
+                            key={label}
+                            href={`#${target}`}
+                            className="transition hover:text-blue-500"
+                        >
+                            {label}
+                        </a>
+                    ))}
+                    <button onClick={toggleTheme}>
+                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
                 </div>
             </div>
+            {menuOpen && (
+                <div className="md:hidden flex flex-col items-center gap-4 pb-4">
+                    {navLinks.map(({ label, target }) => (
+                        <a
+                            key={label}
+                            href={`#${target}`}
+                            className="transition hover:text-blue-500"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            {label}
+                        </a>
+                    ))}
+                    <button onClick={toggleTheme}>
+                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+                </div>
+            )}
         </nav>
     );
 };
