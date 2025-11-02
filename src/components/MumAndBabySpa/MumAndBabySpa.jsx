@@ -3,8 +3,8 @@ import { lorem } from "../../utils/lorem_helper.js";
 export const MumAndBabySpa = () => {
     return (
         <section className="
-            min-h-screen pt-50 flex flex-col items-center justify-center px-6 py-10
-            md:flex-row md:px-20 md:items-start
+            min-h-screen pt-30 flex flex-col items-center justify-center px-6 py-10
+            md:flex-row md:pt-50 md:px-20 md:items-start
             dark:bg-gray-800
         ">
             {/*  Parent Flex Container */}
@@ -18,7 +18,7 @@ export const MumAndBabySpa = () => {
                         alt="Mum & Baby Spa"
                         className="
                             w-64 h-64 md:w-96 object-cover rounded-lg shadow-lg
-                            md:h-96
+                            md:w-full md:h-[800px]
                         "
                     />
                 </div>
@@ -28,7 +28,8 @@ export const MumAndBabySpa = () => {
                     md:-ml-16
                 ">
                     <h1 className="text-3xl font-bold mb-4">Mum & Baby Spa</h1>
-                    <p>{lorem.generateParagraphs(2)}</p>
+                    <p className="pb-2">{lorem.generateParagraphs(2)}</p>
+                    <p>{lorem.generateParagraphs(4)}</p>
                 </div>
             </div>
         </section>
