@@ -21,8 +21,6 @@ export const ThemeProvider = ({children}) => {
         });
     };
 
-    console.log(theme);
-
     return (
         <ThemeContext.Provider value={{theme, toggleTheme}}>
             {children}
