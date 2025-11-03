@@ -1,19 +1,29 @@
 import {Moon, Sun, Menu, X} from "lucide-react";
 import {useTheme} from "../../context/ThemeProvider.jsx";
 import {useState} from "react";
+import {LanguageToggle} from "./LanguageToggle.jsx";
+import {useLanguage} from "../../context/useLanguage.js";
 
 export const Navbar = () => {
     const {theme, toggleTheme} = useTheme();
     const [menuOpen, setMenuOpen] = useState(false);
+    const { language, setLanguage, t } = useLanguage();
 
-    const navLinks = [
-        {label: 'Mum & Baby Spa', target: 'mum-baby-spa'},
-        {label: 'Baby Spa Experience', target: 'baby-spa-experience'},
-        {label: 'Baby Massage', target: 'baby-massage'},
-        {label: 'First Birthday Celebrations', target: 'first-birthday-celebrations'},
-        {label: 'Mum & Toddler', target: 'mum-toddler'},
-        {label: 'Contact Us', target: 'contact-us'},
+    const navLabels = t("navLinks");
+
+    const navTargets = [
+        "mum-baby-spa",
+        "baby-spa-experience",
+        "baby-massage",
+        "first-birthday-celebrations",
+        "mum-toddler",
+        "contact-us",
     ];
+
+    const navLinks = navLabels.map((label, i) => ({
+        label,
+        target: navTargets[i],
+    }));
     
     return (
         <nav
@@ -32,17 +42,21 @@ export const Navbar = () => {
                         src="/baby-spa.jpg"
                         alt="Baby Spa Logo"
                     />
-                    <button
-                        className="
-                            absolute right-6
-                            md:hidden
-                        "
-                        onClick={() => setMenuOpen(prev => !prev)}
-                    >
-                        {menuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
+                    <div className="absolute right-6">
+                        <button
+                            className="md:hidden"
+                            onClick={() => setMenuOpen(prev => !prev)}
+                        >
+                            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                        <div className="hidden items-center gap-4
+                            md:flex
+                        ">
+                            <LanguageToggle />
+                        </div>
+                    </div>
                 </div>
-                <div className="hidden md:flex justify-center items-center max-w-7xl mx-auto py-4 gap-6">
+                <div className="hidden md:flex justify-center items-center max-w-7xl mx-auto py-4 gap-4">
                     {navLinks.map(({ label, target }) => (
                         <a
                             key={label}
@@ -53,7 +67,7 @@ export const Navbar = () => {
                         </a>
                     ))}
                     <button onClick={toggleTheme}>
-                        {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                        {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
                 </div>
             </div>
@@ -72,6 +86,9 @@ export const Navbar = () => {
                     <button onClick={toggleTheme}>
                         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
+                    <div className="flex items-center gap-4">
+                        <LanguageToggle />
+                    </div>
                 </div>
             )}
         </nav>
