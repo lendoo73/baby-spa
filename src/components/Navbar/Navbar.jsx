@@ -7,7 +7,7 @@ import {useLanguage} from "../../context/useLanguage.js";
 export const Navbar = () => {
     const {theme, toggleTheme} = useTheme();
     const [menuOpen, setMenuOpen] = useState(false);
-    const { language, setLanguage, t } = useLanguage();
+    const { t } = useLanguage();
 
     const navLabels = t("navLinks");
 
