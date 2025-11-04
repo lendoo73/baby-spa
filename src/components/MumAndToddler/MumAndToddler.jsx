@@ -1,7 +1,8 @@
 import {lorem} from "../../utils/lorem_helper.js";
+import {useLanguage} from "../../context/useLanguage.js";
 
 export const MumAndToddler = () => {
-    
+    const { t } = useLanguage();
     
     return (
         <section className="relative w-full min-h-screen pt-30 md:pt-50 dark:bg-gray-800">
@@ -19,7 +20,7 @@ export const MumAndToddler = () => {
                     w-80 mt-6 md:mt-0
                     mx-auto md:mx-0
                 ">
-                    <h1 className="text-3xl font-bold mb-4">Mum & Toddler</h1>
+                    <h1 className="text-3xl font-bold mb-4">{t("navLinks.4")}</h1>
                     <p className="pb-2">{lorem.generateParagraphs(2)}</p>
                     <p>{lorem.generateParagraphs(2)}</p>
                 </div>

@@ -1,6 +1,9 @@
 import { lorem } from "../../utils/lorem_helper.js";
+import {useLanguage} from "../../context/useLanguage.js";
 
 export const MumAndBabySpa = () => {
+    const { t } = useLanguage();
+
     return (
         <section className="
             min-h-screen pt-30 flex flex-col items-center justify-center px-6 py-10
@@ -27,7 +30,7 @@ export const MumAndBabySpa = () => {
                     dark:bg-gray-900
                     md:-ml-16
                 ">
-                    <h1 className="text-3xl font-bold mb-4">Mum & Baby Spa</h1>
+                    <h1 className="text-3xl font-bold mb-4">{t("navLinks.0")}</h1>
                     <p className="pb-2">{lorem.generateParagraphs(2)}</p>
                     <p>{lorem.generateParagraphs(4)}</p>
                 </div>
